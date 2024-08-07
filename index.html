@@ -11,9 +11,21 @@
       href="/node_modules/cropperjs/dist/cropper.css"
     />
     <link
-      href="https://fonts.cdnfonts.com/css/times-new-roman"
-      rel="stylesheet"
+      rel="preload"
+      href="https://fonts.cdnfonts.com/s/57197/times.woff"
+      as="font"
+      type="font/woff"
     />
+    <style>
+      @font-face {
+        font-family: "Times New Roman";
+        font-style: normal;
+        font-weight: 400;
+        src:
+          local("Times New Roman"),
+          url(https://fonts.cdnfonts.com/s/57197/times.woff) format("woff");
+      }
+    </style>
   </head>
   <body class="bg-purple-100 leading-normal">
     <header class="container text-center py-10">

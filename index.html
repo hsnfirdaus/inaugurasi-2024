@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nametag Inaugurasi 2024 Polibatam</title>
+    <link rel="stylesheet" type="text/css" href="/src/index.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/node_modules/cropperjs/dist/cropper.css"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/times-new-roman"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-purple-100 leading-normal">
+    <header class="container text-center py-10">
+      <h1 class="text-4xl text-purple-600 font-bold">
+        Nametag Inaugurasi Polibatam 2024
+      </h1>
+      <h2 class="text-slate-600 mt-2">
+        Ini bukan official ya. Just For Fun, Inspired By
+        <a href="https://forms.gle/WSJ9JU21LoZyQ49p9" class="underline"
+          >https://forms.gle/WSJ9JU21LoZyQ49p9</a
+        >
+      </h2>
+    </header>
+    <main class="container grid lg:grid-cols-2 gap-4">
+      <section class="p-4 bg-white shadow-2xl shadow-purple-200 rounded-xl">
+        <form id="nametag-form">
+          <div
+            class="relative aspect-[4/6] border-slate-200 rounded-md h-48 border-2 mx-auto cursor-pointer hover:bg-slate-200 overflow-hidden"
+          >
+            <span
+              class="absolute inset-0 p-2 flex items-center justify-center text-purple-600 font-bold"
+              >Pilih Foto</span
+            >
+            <img id="preview" class="absolute inset-0 block" />
+            <input
+              type="file"
+              name="photo"
+              id="photo"
+              class="absolute inset-0 opacity-0 z-10 cursor-pointer"
+              title=""
+            />
+          </div>
+          <div class="my-4 flex flex-col gap-1">
+            <label for="fullName" class="font-bold text-slate-700"
+              >Nama Lengkap:</label
+            >
+            <input
+              required
+              type="text"
+              name="fullName"
+              class="p-2 rounded-md focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:outline-none border-slate-200 border-2"
+              placeholder="Masukan nama lengkapmu..."
+            />
+          </div>
+          <div class="my-4 flex flex-col gap-1">
+            <label for="nickName" class="font-bold text-slate-700"
+              >Nama Panggilan:</label
+            >
+            <input
+              required
+              type="text"
+              name="nickName"
+              class="p-2 rounded-md focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:outline-none border-slate-200 border-2"
+              placeholder="Masukan nama panggilan..."
+            />
+          </div>
+          <div class="my-4 flex flex-col gap-1">
+            <label for="department" class="font-bold text-slate-700"
+              >Jurusan:</label
+            >
+            <select
+              required
+              type="text"
+              name="department"
+              class="p-2 rounded-md focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:outline-none border-slate-200 border-2 bg-white"
+            >
+              <option selected disabled>Pilih Jurusan...</option>
+              <option value="Manajemen dan Bisnis">Manajemen dan Bisnis</option>
+              <option value="Teknik Elektro">Teknik Elektro</option>
+              <option value="Teknik Informatika">Teknik Informatika</option>
+              <option value="Teknik Mesin">Teknik Mesin</option>
+            </select>
+          </div>
+          <div class="my-4 flex flex-col gap-1">
+            <label for="studyProgram" class="font-bold text-slate-700"
+              >Program Studi:</label
+            >
+            <input
+              required
+              type="text"
+              name="studyProgram"
+              class="p-2 rounded-md focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:outline-none border-slate-200 border-2"
+              placeholder="Masukan nama prodi..."
+            />
+          </div>
+          <div class="my-4 flex flex-col gap-1">
+            <label for="element" class="font-bold text-slate-700"
+              >Elemen:</label
+            >
+            <input
+              required
+              type="text"
+              name="element"
+              class="p-2 rounded-md focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:outline-none border-slate-200 border-2"
+              placeholder="Masukan elemen..."
+            />
+          </div>
+          <div class="text-center">
+            <button
+              type="submit"
+              class="bg-purple-600 border-none py-2 px-4 font-bold text-white rounded-md focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+            >
+              Buat Nametag
+            </button>
+          </div>
+        </form>
+      </section>
+      <section class="p-4 bg-white shadpw-2xl shadow-purple-200 rounded-xl">
+        <canvas
+          id="canvas"
+          width="1749"
+          height="2481"
+          class="max-w-full max-h-[600px] mx-auto object-contain"
+        ></canvas>
+        <div class="text-center mt-4">
+          <button
+            id="downpng"
+            type="button"
+            class="border-purple-600 border-2 py-2 px-4 font-bold text-purple-600 rounded-md focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+          >
+            Download (.PNG)
+          </button>
+          <button
+            id="downpdf"
+            type="button"
+            class="bg-purple-600 border-none py-2 px-4 font-bold text-white rounded-md focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+          >
+            Download (.PDF)
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer class="my-20 text-center">
+      You Can
+      <a
+        href="https://github.com/hsnfirdaus/inaugurasi-2024"
+        class="text-purple-600"
+        >View Source Code</a
+      >.
+    </footer>
+    <div id="cropper" class="fixed inset-0 bg-black/80 z-10 hidden">
+      <div class="flex items-center justify-center h-full">
+        <div class="max-w-2xl w-full bg-white p-4 rounded-xl">
+          <h2 class="text-purple-600 font-bold text-2xl border-b-2 pb-4">
+            Crop Foto
+          </h2>
+          <div class="w-full aspect-[1/1]">
+            <img id="image" class="max-w-full max-h-full" />
+          </div>
+          <div class="text-center mt-2">
+            <button
+              id="cancelcrop"
+              type="button"
+              class="border-purple-600 border-2 py-2 px-4 font-bold text-purple-600 rounded-md focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+            >
+              Batal
+            </button>
+            <button
+              type="button"
+              id="cropbtn"
+              class="bg-purple-600 border-none py-2 px-4 font-bold text-white rounded-md focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+            >
+              Lanjutkan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="loading"
+      class="fixed inset-0 bg-purple-600 text-white flex items-center justify-center text-2xl"
+    >
+      Please Wait...
+    </div>
+    <script type="module" src="/src/cropper.ts"></script>
+    <script type="module" src="/src/nametag.ts"></script>
+    <script>
+      window.addEventListener("load", () => {
+        const loading = document.getElementById("loading");
+        loading.classList.remove("flex");
+        loading.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>
